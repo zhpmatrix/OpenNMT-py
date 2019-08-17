@@ -30,7 +30,6 @@ def check_existing_pt_files(opt):
                              "to avoid overwriting them!\n" % path)
             sys.exit(1)
 
-
 def build_save_dataset(corpus_type, fields, src_reader, tgt_reader, opt):
     assert corpus_type in ['train', 'valid']
 
@@ -141,7 +140,6 @@ def build_save_dataset(corpus_type, fields, src_reader, tgt_reader, opt):
             fields = existing_fields
         torch.save(fields, vocab_path)
 
-
 def build_save_vocab(train_dataset, fields, opt):
     fields = inputters.build_vocab(
         train_dataset, fields, opt.data_type, opt.share_vocab,
@@ -152,7 +150,6 @@ def build_save_vocab(train_dataset, fields, opt):
     vocab_path = opt.save_data + '.vocab.pt'
     torch.save(fields, vocab_path)
 
-
 def count_features(path):
     """
     path: location of a corpus file with whitespace-delimited tokens and
@@ -162,7 +159,6 @@ def count_features(path):
     with codecs.open(path, "r", "utf-8") as f:
         first_tok = f.readline().split(None, 1)[0]
         return len(first_tok.split(u"￨")) - 1
-
 
 def main(opt):
     ArgumentParser.validate_preprocess_args(opt)
@@ -202,7 +198,6 @@ def main(opt):
         logger.info("Building & saving validation data...")
         build_save_dataset('valid', fields, src_reader, tgt_reader, opt)
 
-
 def _get_parser():
     parser = ArgumentParser(description='preprocess.py')
 
@@ -210,9 +205,7 @@ def _get_parser():
     opts.preprocess_opts(parser)
     return parser
 
-
 if __name__ == "__main__":
     parser = _get_parser()
-
     opt = parser.parse_args()
     main(opt)
