@@ -24,7 +24,7 @@ CUDA_VISIBLE_DEVICES=$CUDA python -u ../train.py \
 	-batch_type tokens \
 	-normalization tokens \
 	-max_generator_batches 2 \
-	-train_steps 200 \
+	-train_steps 200000 \
 	-accum_count 4 \
 	-share_embeddings \
 	-copy_attn \

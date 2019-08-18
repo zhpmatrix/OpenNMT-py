@@ -1,9 +1,9 @@
 DATA_DIR=/data/share/zhanghaipeng/data/seq2seq/cnndm
 MODEL_DIR=/data/share/zhanghaipeng/data/seq2seq/cnndm
-STEP=200
+STEP=40000
 python ../translate.py \
 	-gpu 0 \
-	-batch_size 20 \
+	-batch_size 10 \
 	-beam_size 10 \
 	-model $MODEL_DIR/cnndm_step_$STEP.pt \
 	-src $DATA_DIR/test.txt.src \
