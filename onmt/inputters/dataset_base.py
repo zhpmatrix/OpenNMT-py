@@ -40,7 +40,6 @@ def _dynamic_dict(example, src_field, tgt_field):
     Returns:
         torchtext.data.Vocab and ``example``, changed as described.
     """
-
     src = src_field.tokenize(example["src"])
     # make a small vocab containing just the tokens in the source sequence
     unk = src_field.unk_token

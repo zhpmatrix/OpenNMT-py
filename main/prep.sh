@@ -1,4 +1,4 @@
-DATA_DIR=/data/share/zhanghaipeng/data/seq2seq/cnndm
+DATA_DIR=/data/share/zhanghaipeng/data/seq2seq/cnndm/test
 
 python ../preprocess.py \
 	-train_src $DATA_DIR/train.txt.src \

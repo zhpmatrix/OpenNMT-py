@@ -425,7 +425,7 @@ class Translator(object):
         assert self.block_ngram_repeat == 0
 
         batch_size = batch.batch_size
-
+        import pdb;pdb.set_trace()
         # Encoder forward.
         src, enc_states, memory_bank, src_lengths = self._run_encoder(batch)
         self.model.decoder.init_state(src, memory_bank, enc_states)
@@ -610,7 +610,7 @@ class Translator(object):
         use_src_map = self.copy_attn
         beam_size = self.beam_size
         batch_size = batch.batch_size
-
+        import pdb;pdb.set_trace()
         # (1) Run the encoder on the src.
         src, enc_states, memory_bank, src_lengths = self._run_encoder(batch)
         self.model.decoder.init_state(src, memory_bank, enc_states)
@@ -683,8 +683,7 @@ class Translator(object):
             if any_beam_is_finished:
                 # Reorder states.
                 if isinstance(memory_bank, tuple):
-                    memory_bank = tuple(x.index_select(1, select_indices)
-                                        for x in memory_bank)
+                    memory_bank = tuple(x.index_select(1, select_indices) for x in memory_bank)
                 else:
                     memory_bank = memory_bank.index_select(1, select_indices)
 

@@ -43,8 +43,7 @@ class TransformerDecoderLayer(nn.Module):
         self.layer_norm_2 = nn.LayerNorm(d_model, eps=1e-6)
         self.drop = nn.Dropout(dropout)
 
-    def forward(self, inputs, memory_bank, src_pad_mask, tgt_pad_mask,
-                layer_cache=None, step=None):
+    def forward(self, inputs, memory_bank, src_pad_mask, tgt_pad_mask,layer_cache=None, step=None):
         """
         Args:
             inputs (FloatTensor): ``(batch_size, 1, model_dim)``
@@ -77,8 +76,7 @@ class TransformerDecoderLayer(nn.Module):
                                          layer_cache=layer_cache,
                                          attn_type="self")
         elif isinstance(self.self_attn, AverageAttention):
-            query, attn = self.self_attn(input_norm, mask=dec_mask,
-                                         layer_cache=layer_cache, step=step)
+            query, attn = self.self_attn(input_norm, mask=dec_mask,layer_cache=layer_cache, step=step)
 
         query = self.drop(query) + inputs
 

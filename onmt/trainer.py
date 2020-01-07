@@ -219,7 +219,6 @@ class Trainer(object):
         total_stats = onmt.utils.Statistics()
         report_stats = onmt.utils.Statistics()
         self._start_report_manager(start_time=total_stats.start_time)
-
         for i, (batches, normalization) in enumerate(
                 self._accum_batches(train_iter)):
             step = self.optim.training_step
@@ -345,7 +344,6 @@ class Trainer(object):
                 report_stats.n_src_words += src_lengths.sum().item()
 
             tgt_outer = batch.tgt
-
             bptt = False
             for j in range(0, target_size-1, trunc_size):
                 # 1. Create truncated target.
@@ -356,7 +354,6 @@ class Trainer(object):
                     self.optim.zero_grad()
                 outputs, attns = self.model(src, tgt, src_lengths, bptt=bptt)
                 bptt = True
-
                 # 3. Compute loss.
                 try:
                     loss, batch_stats = self.train_loss(

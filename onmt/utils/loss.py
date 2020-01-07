@@ -156,6 +156,7 @@ class LossComputeBase(nn.Module):
         if trunc_size is None:
             trunc_size = batch.tgt.size(0) - trunc_start
         trunc_range = (trunc_start, trunc_start + trunc_size)
+        #with keys(output, target, copy_attn, align)
         shard_state = self._make_shard_state(batch, output, trunc_range, attns)
         if shard_size == 0:
             loss, stats = self._compute_loss(batch, **shard_state)

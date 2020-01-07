@@ -1,7 +1,6 @@
-DATA_DIR=/data/share/zhanghaipeng/data/seq2seq/cnndm
-MODEL_DIR=/data/share/zhanghaipeng/data/seq2seq/cnndm
-CUDA=0,1
-
+DATA_DIR=/data/share/zhanghaipeng/data/seq2seq/cnndm/test
+MODEL_DIR=/data/share/zhanghaipeng/data/seq2seq/cnndm/test
+CUDA=3
 CUDA_VISIBLE_DEVICES=$CUDA python -u ../train.py \
 	-data $DATA_DIR/data \
 	-save_model $MODEL_DIR/cnndm \
@@ -20,8 +19,8 @@ CUDA_VISIBLE_DEVICES=$CUDA python -u ../train.py \
 	-decay_method noam \
 	-label_smoothing 0.1 \
 	-adam_beta2 0.998 \
-	-batch_size 4096 \
-	-batch_type tokens \
+	-batch_size 5 \
+	-batch_type sents \
 	-normalization tokens \
 	-max_generator_batches 2 \
 	-train_steps 200000 \
@@ -29,5 +28,5 @@ CUDA_VISIBLE_DEVICES=$CUDA python -u ../train.py \
 	-share_embeddings \
 	-copy_attn \
 	-param_init_glorot \
-	-world_size 2 \
-	-gpu_ranks 0 1
+	-world_size 1 \
+	-gpu_ranks 0

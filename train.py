@@ -39,7 +39,6 @@ def main(opt):
             vocab, opt.model_type, dynamic_dict=opt.copy_attn)
     else:
         fields = vocab
-
     if len(opt.data_ids) > 1:
         train_shards = []
         for train_id in opt.data_ids:

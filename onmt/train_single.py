@@ -79,7 +79,6 @@ def main(opt, device_id, batch_queue=None, semaphore=None):
         for sn, sf in f_iter:
             if sf.use_vocab:
                 logger.info(' * %s vocab size = %d' % (sn, len(sf.vocab)))
-
     # Build model.
     model = build_model(model_opt, opt, fields, checkpoint)
     n_params, enc, dec = _tally_parameters(model)
