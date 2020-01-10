@@ -1,13 +1,17 @@
-DIR=/nfs/users/zhanghaipeng/spellchecker/data_construction/data/xueyou_data/v2/dynamic_imb/s2s
+DIR=/data/zhanghaipeng/seq2seq/s2s
 DATA_DIR=$DIR/data
 MODEL_DIR=$DIR/model
+LOG_DIR=$DIR/logs
 ROOT_DIR=..
-CUDA=2
+CUDA=0,1,2,3
 CUDA_VISIBLE_DEVICES=$CUDA python -u ../onmt/bin/train.py \
-	-world_size 1 \
-	-gpu_ranks 0 \
+	-world_size 4 \
+	-gpu_ranks 0 1 2 3\
 	-train_step 200000 \
 	-batch_size 4096 \
+	-batch_type tokens \
+	-max_generator_batches 2 \
+	-normalization tokens \
 	-valid_steps 10000 \
 	--save_checkpoint_steps 10000 \
 	-data $DATA_DIR \
@@ -30,9 +34,7 @@ CUDA_VISIBLE_DEVICES=$CUDA python -u ../onmt/bin/train.py \
 	-label_smoothing 0.1 \
 	-optim adam \
 	-adam_beta2 0.998 \
-	-batch_type tokens \
-	-normalization tokens \
-	-max_generator_batches 2 \
 	-accum_count 2 \
 	-share_embeddings \
-	-copy_attn \
+	-tensorboard \
+	-tensorboard_log_dir $LOG_DIR

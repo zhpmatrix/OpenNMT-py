@@ -1,4 +1,4 @@
-DATA_DIR=/nfs/users/zhanghaipeng/spellchecker/data_construction/data/xueyou_data/v2/dynamic_imb/s2s
+DATA_DIR=/data/zhanghaipeng/seq2seq/s2s
 TRAIN_NAME=train_2
 python ../onmt/bin/preprocess.py \
 	-train_src $DATA_DIR/$TRAIN_NAME.txt.src \

@@ -1,4 +1,4 @@
-DIR=/nfs/users/zhanghaipeng/spellchecker/data_construction/data/xueyou_data/v2/dynamic_imb/s2s
+DIR=/data/zhanghaipeng/seq2seq/s2s
 DATA_DIR=$DIR/data
 MODEL_DIR=$DIR/model
 CUDA=3
